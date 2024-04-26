@@ -1,10 +1,6 @@
+import tkinter as tk
 from tkinter import *
-
-
-
-
-
-
+from tkinter import ttk
 class Application:
     def __init__(self, master=None,font=("Calibri", "10"), button_width=5):
         self.widget1 = Frame(master)
