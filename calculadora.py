@@ -1,54 +1,86 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
-class Application:
-    def __init__(self, master=None,font=("Calibri", "10"), button_width=5):
-        self.widget1 = Frame(master)
-        self.widget1.pack()
-        self.msg = Label(self.widget1, text="calculadora")
-        self.msg["font"] = ("Verdana", "10", "italic", "bold")
-        self.msg.pack ()
 
-        for i in range(10):
-            self.botao = Button(self.widget1, text=f"{i}", font=font, width=button_width)
-            self.botao.pack()
+root = Tk()
 
-        self.botaosomar= Button(self.widget1, text="+", font=font, width=button_width)
-        self.botaosomar.pack()
+def somar(numero1, numero2):
+    return numero1 + numero2
 
-        self.botaosubtrair = Button(self.widget1, text="-", font=font, width=button_width)
-        self.botaosubtrair.pack()
+def subtrair(numero1, numero2):
+    return numero1 - numero2
 
-        self.botaodividir = Button(self.widget1, text="/", font=font, width=button_width)
-        self.botaodividir.pack()
+def multiplicar(numero1, numero2):
+    return numero1 * numero2
 
-        self.botaomultiplicar = Button(self.widget1, text="*", font=font, width=button_width)
-        self.botaomultiplicar.pack()
+def dividir(numero1, numero2):
+    return numero1 / numero2
 
-        self.botaoresultado = Button(self.widget1, text="=", font=font, width=button_width,command=self.calcular)
-        self.botaoresultado.pack()
+def atribuir_operacao_soma():
+    root.operacao="+"
 
-        self.numero1=2
-        self.numero2=3
-        self.operacao=""
-        self.labelresultado = Label(self.widget1, text="0")
-        self.labelresultado["font"] = ("Verdana", "10", "italic", "bold")
-        self.labelresultado.pack()
+def atribuir_operacao_subtracao():
+    root.operacao="-"
 
-    def calcular(self):
-        self.labelresultado["text"] =str(self.somar(self.numero1,self.numero2))
+def atribuir_operacao_multiplicacao():
+    root.operacao="*"
 
-    def somar(self,numero1, numero2):
-        return numero1 + numero2
+def atribuir_operacao_divisao():
+    root.operacao="/"        
 
-    def subtrair(self,numero1, numero2):
-        return numero1 - numero2
+def calcular():
+    print(root.operacao)
+    if root.operacao == "+":
+        root.labelresultado["text"] = str(somar(root.numero1,root.numero2))
 
-    def multiplicar(self,numero1, numero2):
-        return numero1 * numero2
+    elif root.operacao == "-":
+        root.labelresultado["text"] = str(subtrair(root.numero1,root.numero2))  
 
-    def dividir(self,numero1, numero2):
-        return numero1 / numero2
+    elif root.operacao == "*":
+        root.labelresultado["text"] = str(multiplicar(root.numero1,root.numero2)) 
+
+    elif root.operacao == "/":
+        root.labelresultado["text"] = str(dividir(root.numero1,root.numero2))          
+ 
+master=None
+font=("Calibri", "10")
+button_width=5
+
+root.widget1 = Frame(master)
+root.widget1.pack()
+root.msg = Label(root.widget1, text="calculadora")
+root.msg["font"] = ("Verdana", "10", "italic", "bold")
+root.msg.pack ()
+
+#falta preencher os numeros das variaveis numero1 e numero2 para gerar os resultados
+
+for i in range(10):
+    root.botao = Button(root.widget1, text=f"{i}", font=font, width=button_width)
+    root.botao.pack()
+
+root.botaosomar= Button(root.widget1, text="+", font=font, width=button_width,command=atribuir_operacao_soma)
+root.botaosomar.pack()
+
+root.botaosubtrair = Button(root.widget1, text="-", font=font, width=button_width,command=atribuir_operacao_subtracao)
+root.botaosubtrair.pack()
+
+root.botaodividir = Button(root.widget1, text="/", font=font, width=button_width,command=atribuir_operacao_divisao)
+root.botaodividir.pack()
+
+root.botaomultiplicar = Button(root.widget1, text="*", font=font, width=button_width,command=atribuir_operacao_multiplicacao)
+root.botaomultiplicar.pack()
+
+root.botaoresultado = Button(root.widget1, text="=", font=font, width=button_width,command=calcular)
+root.botaoresultado.pack()
+
+root.numero1=2
+root.numero2=3
+root.operacao=""
+root.labelresultado = Label(root.widget1, text="0")
+root.labelresultado["font"] = ("Verdana", "10", "italic", "bold")
+root.labelresultado.pack()
+
+root.mainloop()
 
 
 
