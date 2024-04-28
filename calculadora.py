@@ -41,7 +41,11 @@ def calcular():
 
     elif root.operacao == "/":
         root.labelresultado["text"] = str(dividir(root.numero1,root.numero2))          
- 
+
+
+    
+
+
 master=None
 font=("Calibri", "10")
 button_width=5
@@ -80,11 +84,4 @@ root.labelresultado = Label(root.widget1, text="0")
 root.labelresultado["font"] = ("Verdana", "10", "italic", "bold")
 root.labelresultado.pack()
 
-root.mainloop()
-
-
-
-
-root = Tk()
-Application(root)
 root.mainloop()
