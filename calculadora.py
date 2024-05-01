@@ -2,86 +2,41 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 
-root = Tk()
+#cores
+cor1 = "#3b3b3b" # black/ preto
+cor2 = "#feffff" # white/ branco
+cor3 = "#38576b" # azul forte
+cor4 = "#ECEFF1" # cinzento
+cor5 = "#FFAB40" # Laranja/ orange
 
-def somar(numero1, numero2):
-    return numero1 + numero2
-
-def subtrair(numero1, numero2):
-    return numero1 - numero2
-
-def multiplicar(numero1, numero2):
-    return numero1 * numero2
-
-def dividir(numero1, numero2):
-    return numero1 / numero2
-
-def atribuir_operacao_soma():
-    root.operacao="+"
-
-def atribuir_operacao_subtracao():
-    root.operacao="-"
-
-def atribuir_operacao_multiplicacao():
-    root.operacao="*"
-
-def atribuir_operacao_divisao():
-    root.operacao="/"        
-
-def calcular():
-    print(root.operacao)
-    if root.operacao == "+":
-        root.labelresultado["text"] = str(somar(root.numero1,root.numero2))
-
-    elif root.operacao == "-":
-        root.labelresultado["text"] = str(subtrair(root.numero1,root.numero2))  
-
-    elif root.operacao == "*":
-        root.labelresultado["text"] = str(multiplicar(root.numero1,root.numero2)) 
-
-    elif root.operacao == "/":
-        root.labelresultado["text"] = str(dividir(root.numero1,root.numero2))          
+#janela da aplicaçao
+janela = Tk()
+janela.title("Calculadora")
+janela.geometry("235x318")
+janela.config(background=cor1) #fundo do frame
 
 
-    
+#separando a tela em frames.
+frame_tela = Frame(janela, width=235, height=50, bg=cor3)
+frame_tela.grid(row=0, column=0)
+
+frame_corpo = Frame(janela, width=235, height= 268)
+frame_corpo.grid(row=1, column=0)
 
 
-master=None
-font=("Calibri", "10")
-button_width=5
+#botoes
+b_1 = Button(frame_corpo, text="C", width=11, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_1.place(x=0, y=0)
+b_2 = Button(frame_corpo, text="%", width=5, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_2.place(x=118, y=0)
+b_3 = Button(frame_corpo, text="/", width=5, height=2, bg=cor5, fg=cor2, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_3.place(x=177, y=0)
 
-root.widget1 = Frame(master)
-root.widget1.pack()
-root.msg = Label(root.widget1, text="calculadora")
-root.msg["font"] = ("Verdana", "10", "italic", "bold")
-root.msg.pack ()
 
-#falta preencher os numeros das variaveis numero1 e numero2 para gerar os resultados
 
-for i in range(10):
-    root.botao = Button(root.widget1, text=f"{i}", font=font, width=button_width)
-    root.botao.pack()
 
-root.botaosomar= Button(root.widget1, text="+", font=font, width=button_width,command=atribuir_operacao_soma)
-root.botaosomar.pack()
 
-root.botaosubtrair = Button(root.widget1, text="-", font=font, width=button_width,command=atribuir_operacao_subtracao)
-root.botaosubtrair.pack()
 
-root.botaodividir = Button(root.widget1, text="/", font=font, width=button_width,command=atribuir_operacao_divisao)
-root.botaodividir.pack()
 
-root.botaomultiplicar = Button(root.widget1, text="*", font=font, width=button_width,command=atribuir_operacao_multiplicacao)
-root.botaomultiplicar.pack()
 
-root.botaoresultado = Button(root.widget1, text="=", font=font, width=button_width,command=calcular)
-root.botaoresultado.pack()
-
-root.numero1=2
-root.numero2=3
-root.operacao=""
-root.labelresultado = Label(root.widget1, text="0")
-root.labelresultado["font"] = ("Verdana", "10", "italic", "bold")
-root.labelresultado.pack()
-
-root.mainloop()
+janela.mainloop()
