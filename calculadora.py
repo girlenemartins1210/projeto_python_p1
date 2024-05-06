@@ -8,6 +8,7 @@ cor2 = "#feffff" # white/ branco
 cor3 = "#38576b" # azul forte
 cor4 = "#ECEFF1" # cinzento
 cor5 = "#FFAB40" # Laranja/ orange
+cor6 = "#58ce74" # verde claro
 
 #janela da aplicaçao
 janela = Tk()
@@ -29,9 +30,16 @@ b_1 = Button(frame_corpo, text="C", width=11, height=2, bg=cor4, font=('Ivy 13 b
 b_1.place(x=0, y=0)
 b_2 = Button(frame_corpo, text="%", width=5, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_2.place(x=118, y=0)
-b_3 = Button(frame_corpo, text="/", width=5, height=2, bg=cor5, fg=cor2, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_3 = Button(frame_corpo, text="÷", width=5, height=2, bg=cor5, fg=cor2, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_3.place(x=177, y=0)
-
+b_4 = Button(frame_corpo, text="+", width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_4.place(x= 177, y=50)
+b_5 = Button(frame_corpo, text="-", width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_5.place(x= 177, y=100)
+b_6 = Button(frame_corpo, text="x", width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_6.place(x= 177, y=150)
+b_7 = Button(frame_corpo, text="=", width= 5, height= 3, bg= cor6, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_7.place(x= 177, y=200)
 
 
 
