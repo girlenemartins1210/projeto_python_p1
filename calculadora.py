@@ -38,6 +38,29 @@ def entrar_valores(event):
     #passando o valor para a tela
     valor_texto.set(todos_valores)
 
+# função para multiplicação
+def multi():
+    global todos_valores
+    todos_valores += '*'
+    valor_texto.set(todos_valores)
+
+# função para calcular o resultado
+def igual():
+    global todos_valores
+    try:
+        resultado = eval(todos_valores)
+        valor_texto.set(resultado)
+        todos_valores = str(resultado)
+    except Exception as e:
+        valor_texto.set("Erro")
+        todos_valores = ''
+
+#função-limpar
+def limpar():
+    global todos_valores
+    todos_valores = ''
+    valor_texto.set('')
+
 
 
 
@@ -49,7 +72,7 @@ app_label.place(x=0,y=0)
 
 
 #botoes
-b_1 = Button(frame_corpo, text="C", command = lambda: entrar_valores('c'), width=11, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_1 = Button(frame_corpo, text="C", command=limpar, width=11, height=2, bg=cor4,font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_1.place(x=0, y=0)
 b_2 = Button(frame_corpo, text="%", command = lambda: entrar_valores('%'), width=5, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_2.place(x=118, y=0)
@@ -59,9 +82,9 @@ b_4 = Button(frame_corpo, text="+", command = lambda: entrar_valores('+'), width
 b_4.place(x= 177, y=50)
 b_5 = Button(frame_corpo, text="-", command = lambda: entrar_valores('-'), width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
 b_5.place(x= 177, y=100)
-b_6 = Button(frame_corpo, text="x", command = lambda: entrar_valores('x'), width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_6 = Button(frame_corpo, text="x", command=multi, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
 b_6.place(x= 177, y=150)
-b_7 = Button(frame_corpo, text="=", command = lambda: entrar_valores('='), width= 5, height= 3, bg= cor6, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_7 = Button(frame_corpo, text="=", command=igual, width=5, height=3, bg=cor6, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
 b_7.place(x= 177, y=200)
 
 
