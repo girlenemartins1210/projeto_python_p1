@@ -44,11 +44,20 @@ def multi():
     todos_valores += '*'
     valor_texto.set(todos_valores)
 
+# função para divisão
+def divisao():
+    global todos_valores
+    todos_valores += '/'
+    valor_texto.set(todos_valores)    
+
+
 # função para calcular o resultado
 def igual():
     global todos_valores
     try:
         resultado = eval(todos_valores)
+        if float(int(resultado))==resultado:
+            resultado= int(resultado)
         valor_texto.set(resultado)
         todos_valores = str(resultado)
     except Exception as e:
@@ -76,7 +85,7 @@ b_1 = Button(frame_corpo, text="C", command=limpar, width=11, height=2, bg=cor4,
 b_1.place(x=0, y=0)
 b_2 = Button(frame_corpo, text="%", command = lambda: entrar_valores('%'), width=5, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_2.place(x=118, y=0)
-b_3 = Button(frame_corpo, text="÷", command = lambda: entrar_valores('÷'), width=5, height=2, bg=cor5, fg=cor2, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_3 = Button(frame_corpo, text="÷", command = divisao, width=5, height=2, bg=cor5, fg=cor2, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_3.place(x=177, y=0)
 b_4 = Button(frame_corpo, text="+", command = lambda: entrar_valores('+'), width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
 b_4.place(x= 177, y=50)
