@@ -8,12 +8,12 @@ cor2 = "#feffff" # white/ branco
 cor3 = "#38576b" # azul forte
 cor4 = "#ECEFF1" # cinzento
 cor5 = "#FFAB40" # Laranja/ orange
-cor6 = "#58ce74" # verde claro
+cor6 = "#0abef5" # azul claro
 
 #janela da aplicaçao
 janela = Tk()
 janela.title("Calculadora")
-janela.geometry("235x318")
+janela.geometry("235x301")
 janela.config(background=cor1) #fundo do frame
 
 
@@ -23,6 +23,7 @@ frame_tela.grid(row=0, column=0)
 
 frame_corpo = Frame(janela, width=235, height= 268)
 frame_corpo.grid(row=1, column=0)
+
 
 # variavel todos os valores
 
@@ -79,7 +80,7 @@ def multi():
 
 # função para divisão
 def divisao():
-    inserir_valor_texto("÷") 
+    inserir_valor_texto("/") 
 
 # função para somar
 def soma():
@@ -112,7 +113,11 @@ def limpar():
     todos_valores = ''
     valor_texto.set('')
 
-
+def adicionar_ponto_decimal():
+    global todos_valores
+    if '.' not in todos_valores.split()[-1]:
+        todos_valores += '.'
+        valor_texto.set(todos_valores)
 
 
 # criando label
@@ -123,46 +128,44 @@ app_label.place(x=0,y=0)
 
 
 #botoes
-b_1 = Button(frame_corpo, text="C", command=limpar, width=11, height=2, bg=cor4,font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
-b_1.place(x=0, y=0)
+b_1 = Button(frame_corpo, text="C", command=limpar, width=11, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_1.grid(row=0, column=0, columnspan=2)
 b_2 = Button(frame_corpo, text="%", command=porcentagem, width=5, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
-b_2.place(x=118, y=0)
-b_3 = Button(frame_corpo, text="÷", command=divisao, width=5, height=2, bg=cor5, fg=cor2, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
-b_3.place(x=177, y=0)
-b_4 = Button(frame_corpo, text="+", command=soma, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_4.place(x= 177, y=50)
-b_5 = Button(frame_corpo, text="-", command=subtrair, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_5.place(x= 177, y=100)
+b_2.grid(row=0, column=2)
+b_3 = Button(frame_corpo, text="/", command=divisao, width=5, height=2, bg=cor4,  font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_3.grid(row=0, column=3, sticky="ew")
+b_4 = Button(frame_corpo, text="+", command=soma, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_4.grid(row=1, column=3, sticky="ew")
+b_5 = Button(frame_corpo, text="-", command=subtrair, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_5.grid(row=2, column=3, sticky="ew")
 b_6 = Button(frame_corpo, text="x", command=multi, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_6.place(x= 177, y=150)
-b_7 = Button(frame_corpo, text="=", command=igual, width=5, height=3, bg=cor6, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_7.place(x= 177, y=200)
+b_6.grid(row=3, column=3, sticky="ew")
+b_7 = Button(frame_corpo, text="=", command=igual, width=5, height=2, bg=cor6, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_7.grid(row=4, column=3, sticky="ew")
 
-
-#botões-numeros
-b_8 = Button(frame_corpo, text="7", command = entrar_numero7, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_8.place(x= 0, y=50)
-b_9 = Button(frame_corpo, text="8", command = entrar_numero8, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_9.place(x= 60, y=50)
-b_10 = Button(frame_corpo, text="9", command = entrar_numero9, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_10.place(x= 120, y=50)
-b_11 = Button(frame_corpo, text="4", command = entrar_numero4, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_11.place(x= 0, y=100)
-b_12 = Button(frame_corpo, text="5", command = entrar_numero5, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_12.place(x= 60, y=100)
-b_13 = Button(frame_corpo, text="6", command = entrar_numero6, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_13.place(x= 120, y=100)
-b_14 = Button(frame_corpo, text="1", command = entrar_numero1, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_14.place(x= 0, y=150)
-b_15 = Button(frame_corpo, text="2", command = entrar_numero2, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_15.place(x= 60, y=150)
-b_16 = Button(frame_corpo, text="3", command = entrar_numero3, width= 5, height= 2, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_16.place(x= 120, y=150)
-b_17 = Button(frame_corpo, text="0", command = entrar_numero0, width= 17, height= 3, bg= cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
-b_17.place(x= 0, y=200)
-
-
-
+# botões-numeros
+b_8 = Button(frame_corpo, text="7", command=entrar_numero7, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_8.grid(row=1, column=0)
+b_9 = Button(frame_corpo, text="8", command=entrar_numero8, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_9.grid(row=1, column=1)
+b_10 = Button(frame_corpo, text="9", command=entrar_numero9, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_10.grid(row=1, column=2)
+b_11 = Button(frame_corpo, text="4", command=entrar_numero4, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_11.grid(row=2, column=0)
+b_12 = Button(frame_corpo, text="5", command=entrar_numero5, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_12.grid(row=2, column=1)
+b_13 = Button(frame_corpo, text="6", command=entrar_numero6, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_13.grid(row=2, column=2)
+b_14 = Button(frame_corpo, text="1", command=entrar_numero1, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_14.grid(row=3, column=0)
+b_15 = Button(frame_corpo, text="2", command=entrar_numero2, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_15.grid(row=3, column=1)
+b_16 = Button(frame_corpo, text="3", command=entrar_numero3, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_16.grid(row=3, column=2)
+b_17 = Button(frame_corpo, text="0", command=entrar_numero0, width=11, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_17.grid(row=4, column=0, columnspan=2)
+b_18 = Button((frame_corpo), text=".", command=adicionar_ponto_decimal, width=5, height=2, bg=cor4, font=("Ivy 13 bold"), relief=RAISED, overrelief=RIDGE)
+b_18.grid(row=4, column=2)
 
 
 janela.mainloop()
